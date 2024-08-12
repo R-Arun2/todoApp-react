@@ -1,13 +1,36 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* :root{
+  --background-color: #f6f6f6;
+
+​--foreground-color: #003cff;
+
+--primary-text-color: #0a0a0a;
+
+--toggle-bg: #f0eb9d;
+
+--toggle-fg: #ffd000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+[data-theme="dark"]{
+  --background-color: #0a0a0a;
+  --foreground-color: #567aff;
+  --primary-text-color: #f6f6f6;
+  --secndary-text-color: #0a0a0a;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+
+} */
+
+
+/* App.css or index.css */
+
+/* body[data-theme='dark'] {
+  background-color: #121212;
+  color: #ffffff;
 }
+
+body[data-theme='light'] {
+  background-color: #ffffff;
+  color: #000000;
+} */
+
+/* Add more styling as needed */
