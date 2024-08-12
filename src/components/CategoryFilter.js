@@ -1,23 +1,31 @@
-import React from 'react';
-import { TextField, MenuItem } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Dropdown } from '@nextui-org/react';
 
+const CategoryFilter = ({ todos, onCategoryChange }) => {
+  const predefinedCategories = ['Work', 'Personal', 'Shopping'];
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-// Filter by category
+  // Get unique categories from todos and merge with predefined categories
+  const categories = [...new Set([...predefinedCategories, ...todos.map(todo => todo.category)])];
 
-const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => (
-  <TextField
-    fullWidth
-    select
-    label="Filter by Category"
-    variant="outlined"
-    value={selectedCategory}
-    onChange={(e) => setSelectedCategory(e.target.value)}
-  >
-    <MenuItem value="all">All</MenuItem>
-    <MenuItem value="work">Work</MenuItem>
-    <MenuItem value="personal">Personal</MenuItem>
-    <MenuItem value="shopping">Shopping</MenuItem>
-  </TextField>
-);
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    onCategoryChange(category);
+  };
+
+  return (
+    <Dropdown>
+      <Dropdown.Button flat>
+        {selectedCategory}
+      </Dropdown.Button>
+      <Dropdown.Menu aria-label="Categories" onAction={handleCategoryChange}>
+        <Dropdown.Item key="All">All</Dropdown.Item>
+        {categories.map((category) => (
+          <Dropdown.Item key={category}>{category}</Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
 
 export default CategoryFilter;

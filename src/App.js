@@ -10,7 +10,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import { Global } from '@emotion/react';
 import { message } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons'; 
+import { DeleteOutlined } from '@ant-design/icons';
 
 // Utility function to format date as day/mon/yy
 const formatDate = (dateStr) => {
@@ -186,7 +186,7 @@ function App() {
           setSearchTerm={handleSearchChange}
           selectedCategory={selectedCategory}
           setSelectedCategory={handleCategoryChange}
-          categories={['all', ...new Set(filteredTodos.map(todo => todo.category))]} // No title case conversion
+          categories={['all', 'work', 'personal', 'shopping']} // Fixed categories
           filterStatus={filterStatus}
           setFilterStatus={handleFilterStatusChange}
           totalCount={filteredTodos.length}
@@ -238,13 +238,13 @@ function App() {
                         <TableCell sx={{ display: 'flex', gap: 1 }}>
                           <IconButton onClick={() => toggleComplete(todo.id)}>
                             {todo.completed ? (
-                              <CheckCircleIcon style={{ color: '#008000' }} /> // Completed icon
+                              <CheckCircleIcon style={{ color: '#008000' }} />
                             ) : (
-                              <AdjustIcon style={{ color: '#00A9FF' }} /> // Active icon
+                              <AdjustIcon style={{ color: '#00A9FF' }} />
                             )}
                           </IconButton>
                           <IconButton onClick={() => handleDeleteTodo(todo.id)}>
-                            <DeleteOutlined style={{ color: '#FF4646' }} /> {/* Delete icon */}
+                            <DeleteOutlined style={{ color: '#FF4646' }} />
                           </IconButton>
                         </TableCell>
                       </TableRow>
@@ -252,19 +252,18 @@ function App() {
                   </TableBody>
                 </Table>
               )}
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25]}
+                component="div"
+                count={filteredTodos.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handlePageChange}
+                onRowsPerPageChange={handleRowsPerPageChange}
+                ActionsComponent={CustomPaginationActions}
+              />
             </TableContainer>
           )}
-
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={filteredTodos.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handlePageChange}
-            onRowsPerPageChange={handleRowsPerPageChange}
-            ActionsComponent={CustomPaginationActions}
-          />
         </Container>
       </div>
     </ThemeProvider>
